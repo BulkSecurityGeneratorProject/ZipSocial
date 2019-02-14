@@ -1,0 +1,56 @@
+entity UserProfile {
+    firstName String,
+    lastName String,
+    userStack String,
+}
+
+entity Cohort {
+    gradDate String
+}
+
+entity Employer {
+    companyName String,
+    city String,
+    state String
+}
+
+entity Post {
+    timestamp LocalDate,
+    content String,
+    likes String,
+}
+
+entity Privacy {
+	publicView Boolean,
+    cohortView Boolean,
+    employerView Boolean
+}
+
+
+relationship ManyToOne {
+	UserProfile{employer} to Employer
+}
+
+relationship ManyToOne {
+    Post{poster} to UserProfile
+}
+
+relationship ManyToOne {
+    UserProfile{cohort} to Cohort
+}
+
+relationship OneToOne {
+	UserProfile{user} to User
+}
+
+relationship ManyToOne {
+	Post{privacySetting} to Privacy
+}
+
+
+
+
+
+
+
+
